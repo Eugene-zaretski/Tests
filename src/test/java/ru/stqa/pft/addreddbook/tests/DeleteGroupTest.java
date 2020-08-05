@@ -4,7 +4,7 @@ import org.junit.Test;
 
 
 public class DeleteGroupTest extends TestBase {
-//коммент тест
+
     @Test
     public void testDeleteGroup() {
         app.getNavigationHelper().gotoGroupPage("GROUPS");
