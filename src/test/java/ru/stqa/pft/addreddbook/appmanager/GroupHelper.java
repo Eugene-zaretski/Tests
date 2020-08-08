@@ -25,7 +25,7 @@ public class GroupHelper extends HelperBase {
         type(groupData.getFooter(), By.name("group_footer"));
        /* driver.findElement(By.name("group_header")).click();
         driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-        driver.findElement(By.name("group_footer")).click();
+       /* driver.findElement(By.name("group_footer")).click();
         driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());*/
 
     }

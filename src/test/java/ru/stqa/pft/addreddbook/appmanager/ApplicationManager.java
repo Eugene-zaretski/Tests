@@ -3,7 +3,9 @@ package ru.stqa.pft.addreddbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,13 +15,24 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
-    JavascriptExecutor js;
+    private String browser;
+    //JavascriptExecutor js;
+
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+
+    }
 
     public void init() {
         System.setProperty("webdriver.gecko.driver", "D:\\geckodriver.exe");
-        driver = new FirefoxDriver();
-        js = (JavascriptExecutor) driver;
-        Map<String, Object> vars = new HashMap<String, Object>();
+        //String browser = BrowserType.FIREFOX;
+        if (browser == BrowserType.FIREFOX) {
+            driver = new FirefoxDriver();
+        } else if (browser == BrowserType.CHROME) {
+            driver = new ChromeDriver();
+        }
+        //js = (JavascriptExecutor) driver;
+        //Map<String, Object> vars = new HashMap<String, Object>();
         driver.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
