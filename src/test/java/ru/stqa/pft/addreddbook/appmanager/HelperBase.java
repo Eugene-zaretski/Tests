@@ -2,6 +2,7 @@ package ru.stqa.pft.addreddbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class HelperBase {
@@ -17,15 +18,33 @@ public class HelperBase {
 
     protected void type(String name, By locator) {
         click(locator);
-        driver.findElement(locator).sendKeys(name);
+        if (name != null) {
+            String existingName = driver.findElement(locator).getAttribute("value"); // если некоторые поля одинаковые
+            if (!name.equals(existingName)) {
+                driver.findElement(locator).clear();
+                driver.findElement(locator).sendKeys(name);
+
+            }
+        }
+      /*  driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(name);*/
     }
 
-    /*public boolean isAlertPresent(){
+    public boolean isAlertPresent(){ // для перехвата исключений
         try {
             driver.switchTo().alert();
             return true;
         } catch (NoAlertPresentException e){
             return false;
         }
-    }*/
+    }
+
+    public boolean isElementPresent(By locator) {
+        try {
+            driver.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
 }

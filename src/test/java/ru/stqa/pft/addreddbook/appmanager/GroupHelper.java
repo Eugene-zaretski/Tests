@@ -30,6 +30,8 @@ public class GroupHelper extends HelperBase {
 
     }
 
+
+
     public void initGroupCreation(String s) {
         click(By.name(s));
     }

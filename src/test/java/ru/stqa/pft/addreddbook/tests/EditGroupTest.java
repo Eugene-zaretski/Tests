@@ -11,7 +11,7 @@ public class EditGroupTest extends TestBase {
         app.getNavigationHelper().gotoGroupPage("GROUPS");
         app.getGroupHelper().selectGroup("selected[]");
         app.getGroupHelper().initGroupEdit("edit"); // надо написать метод для отчистки поля
-        app.getGroupHelper().fillGroupForm(new GroupData("new name", "qwerty-test", "asd-test"));
+        app.getGroupHelper().fillGroupForm(new GroupData("new", "xer-tam", "test-tutut"));
         app.getGroupHelper().submitGroupEdit("update");
         app.getGroupHelper().returnToGroupPage("group page");
 
