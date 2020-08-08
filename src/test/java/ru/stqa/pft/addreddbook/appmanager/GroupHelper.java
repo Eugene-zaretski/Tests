@@ -43,6 +43,7 @@ public class GroupHelper extends HelperBase {
         click(By.name(s));
     }
 
+
     public void initGroupEdit(String edit) {
         click(By.name(edit));
     }

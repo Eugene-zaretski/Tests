@@ -1,27 +1,25 @@
 package ru.stqa.pft.addreddbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ApplicationManager {
     protected WebDriver driver;
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
+    private ContactHelper contactHelper;
     private String browser;
-    //JavascriptExecutor js;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
-
     }
+    //JavascriptExecutor js;
+
+
 
     public void init() {
         System.setProperty("webdriver.gecko.driver", "D:\\geckodriver.exe");
@@ -38,6 +36,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
         sessionHelper.login("admin", "secret");
+        contactHelper = new ContactHelper(driver);
 
     }
 
@@ -56,5 +55,9 @@ public class ApplicationManager {
 
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
+    }
+
+    public ContactHelper getContactHelper(){
+        return contactHelper;
     }
 }

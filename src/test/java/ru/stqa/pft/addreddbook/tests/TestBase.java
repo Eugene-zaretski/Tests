@@ -11,7 +11,7 @@ public class TestBase {
     protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         app.init();
 
     }

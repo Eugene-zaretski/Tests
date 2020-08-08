@@ -9,6 +9,7 @@ public class HelperBase {
     protected WebDriver driver;
 
     public HelperBase(WebDriver driver) {
+
         this.driver = driver;
     }
 
@@ -19,7 +20,7 @@ public class HelperBase {
     protected void type(String name, By locator) {
         click(locator);
         if (name != null) {
-            String existingName = driver.findElement(locator).getAttribute("value"); // если некоторые поля одинаковые
+            String existingName = driver.findElement(locator).getAttribute("value"); // если поля одинаковые
             if (!name.equals(existingName)) {
                 driver.findElement(locator).clear();
                 driver.findElement(locator).sendKeys(name);
@@ -30,11 +31,11 @@ public class HelperBase {
         driver.findElement(locator).sendKeys(name);*/
     }
 
-    public boolean isAlertPresent(){ // для перехвата исключений
+    public boolean isAlertPresent() { // для перехвата исключений
         try {
             driver.switchTo().alert();
             return true;
-        } catch (NoAlertPresentException e){
+        } catch (NoAlertPresentException e) {
             return false;
         }
     }

@@ -27,6 +27,15 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("home"));
     }
 
+   public void gotoContactPage(String groups) {
+        if (isElementPresent(By.tagName("h1"))
+                && driver.findElement(By.tagName("h1")).getText().equals("EDIT_ADD_ENTRY"))
+               // && isElementPresent(By.name("new")))
+        {
+            return;
+        }
+        click(By.linkText(groups));
+    }
 
 
 }
