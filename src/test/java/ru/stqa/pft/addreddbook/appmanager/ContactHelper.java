@@ -2,7 +2,12 @@ package ru.stqa.pft.addreddbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addreddbook.model.ContactData;
+import ru.stqa.pft.addreddbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ContactHelper extends HelperBase {
@@ -26,6 +31,21 @@ public class ContactHelper extends HelperBase {
         type(contactData.getLastname(), By.name("lastname"));
 
 
+    }
+
+    public int getContactCount() {
+        return driver.findElements(By.name("selected[]")).size();
+    }
+
+    public List<GroupData> getGroupList() {                  // получение списка
+        List<GroupData> groups = new ArrayList<GroupData>();
+        List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
+        for (WebElement element : elements){
+            String name = element.getText();
+            GroupData group = new GroupData(name, null, null);
+            groups.add(group);
+        }
+        return groups;
     }
 
 /*
