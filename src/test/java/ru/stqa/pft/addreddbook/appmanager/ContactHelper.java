@@ -37,7 +37,7 @@ public class ContactHelper extends HelperBase {
         return driver.findElements(By.name("selected[]")).size();
     }
 
-    public List<GroupData> getGroupList() {                  // получение списка
+   /*public List<GroupData> getGroupList() {                  // получение списка
         List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements){

@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.stqa.pft.addreddbook.model.GroupData;
 
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -14,16 +16,34 @@ public class GroupCreationTest extends TestBase {
     public void testGroupCreate() {
         app.getNavigationHelper().gotoGroupPage("GROUPS");
         // int before = app.getGroupHelper().getGroupCount(); - cчитает просто количество элементов групп
-        List<GroupData> before = app.getContactHelper().getGroupList();  // считаем размер списка групп
+        List<GroupData> before = app.getGroupHelper().getGroupList();  // считаем размер списка групп
         // app.getGroupHelper().createGroup(new GroupData ("zzz", null, null)); - один из вариантов создания группы, через отдельный метод
+        GroupData group = new GroupData("test", "qwerty", "asd");
         app.getGroupHelper().initGroupCreation("new");
-        app.getGroupHelper().fillGroupForm(new GroupData("test", "qwerty", "asd"));
+        app.getGroupHelper().fillGroupForm(group);
         app.getGroupHelper().submitGroupCreation("submit");
         app.getGroupHelper().returnToGroupPage("group page");
-        List<GroupData> after = app.getContactHelper().getGroupList();
+        List<GroupData> after = app.getGroupHelper().getGroupList();
         //int after = app.getGroupHelper().getGroupCount();
         Assert.assertEquals(after.size(),before.size() + 1);
-        app.logout("LOGOUT");
+        //app.logout("LOGOUT");
+
+
+      /*  int max = 0;
+        for (GroupData g: after){
+            if (g.getId() > max){
+                max = g.getId();
+            }
+        }*/
+
+        //int max1 = after.stream().max( (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId(); // лямбда выражение, вычисление макс индетификатора
+      //  group.setId(after.stream().max( (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+        before.add(group);
+        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+        before.sort(byId);
+        after.sort(byId);
+        //Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+        Assert.assertEquals(before,after);
     }
 
 }

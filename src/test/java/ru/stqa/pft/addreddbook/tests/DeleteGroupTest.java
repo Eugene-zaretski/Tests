@@ -4,21 +4,27 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.stqa.pft.addreddbook.model.GroupData;
 
+import java.util.List;
+
 
 public class DeleteGroupTest extends TestBase {
 
     @Test
     public void testDeleteGroup() {
         app.getNavigationHelper().gotoGroupPage("GROUPS");
-        if (! app.getGroupHelper().isThereAGroup()){
+        if (!app.getGroupHelper().isThereAGroup()) {
             app.getGroupHelper().createGroup(new GroupData("test", null, null));
         }
-        int before = app.getGroupHelper().getGroupCount();
-        app.getGroupHelper().selectGroup("selected[]");
+        List<GroupData> before = app.getGroupHelper().getGroupList();
+        app.getGroupHelper().selectGroup(before.size() -1);
         app.getGroupHelper().deleteGroup("delete");
         app.getGroupHelper().returnToGroupPage("group page");
-        int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(after,before - 1);
+        List<GroupData> after = app.getGroupHelper().getGroupList();
+        Assert.assertEquals(after.size(), before.size() - 1);
+
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
 
     }
+
 }
