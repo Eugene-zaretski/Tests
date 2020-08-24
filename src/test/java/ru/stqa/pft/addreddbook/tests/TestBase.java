@@ -3,6 +3,8 @@ package ru.stqa.pft.addreddbook.tests;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.remote.BrowserType;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addreddbook.appmanager.ApplicationManager;
 
 

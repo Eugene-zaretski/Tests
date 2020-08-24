@@ -11,7 +11,7 @@ public class NavigationHelper extends HelperBase {
 
     }
 
-    public void gotoGroupPage(String groups) {
+    public void groupPage(String groups) {
         if (isElementPresent(By.tagName("h1"))
                 && driver.findElement(By.tagName("h1")).getText().equals("Groups")
                 && isElementPresent(By.name("new")))
@@ -20,14 +20,14 @@ public class NavigationHelper extends HelperBase {
         }
         click(By.linkText(groups));
     }
-    public void gotoHomePage(String home){
+    public void homePage(String home){
         if (isElementPresent(By.id("maintable"))){
             return;
         }
         click(By.linkText(home));
     }
 
-   public void gotoContactPage(String groups) {
+   public void contactPage(String groups) {
         if (isElementPresent(By.tagName("h1"))
                 && driver.findElement(By.tagName("h1")).getText().equals("EDIT_ADD_ENTRY"))
                // && isElementPresent(By.name("new")))
