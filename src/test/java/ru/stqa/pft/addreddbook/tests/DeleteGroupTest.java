@@ -23,7 +23,7 @@ public class DeleteGroupTest extends TestBase {
             app.group().create(new GroupData().withName("test"));
         }
         Groups before = app.group().all();
-        GroupData deletedGroup = before.iterator().next();
+        GroupData deletedGroup = before.iterator().next(); // итератор - позволяет последовательно перебирать элементы; нэкст вернет первый попавшийся элемент множества
         app.group().delete(deletedGroup);
         Groups after = app.group().all();
         assertEquals(after.size(), before.size() - 1);

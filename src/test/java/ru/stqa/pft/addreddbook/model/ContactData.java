@@ -1,14 +1,24 @@
 package ru.stqa.pft.addreddbook.model;
 
 public class ContactData {
+    private  int id;
     private  String firstname;
     private  String middlename;
     private  String lastname;
     private  String phone_home;
     private  String phone_mobile;
     private  String phone_work;
+    private  String allPhones;
 
-   /* public ContactData(String firstname, String middlename, String lastname, String phone_home, String phone_mobile, String phone_work) {
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+/* public ContactData(String firstname, String middlename, String lastname, String phone_home, String phone_mobile, String phone_work) {
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -64,6 +74,14 @@ public class ContactData {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
 }
 
 
