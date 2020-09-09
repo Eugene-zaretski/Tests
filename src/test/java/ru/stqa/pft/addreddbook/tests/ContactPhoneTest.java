@@ -21,12 +21,12 @@ public class ContactPhoneTest extends TestBase{
         app.contact().fillContactForm(
                 new ContactData()
                         .withFirstname("Phone22").withLastname("test_p22").withMiddlename("test_u22")
-                        .withPhone_home("221001").withPhone_work("21777"));
+                        .withPhone_home("221001").withPhone_mobile("99909").withPhone_work("21777"));
         app.contact().submitContactCreation("submit");
         app.goTo().homePage("home page");
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-       // MatcherAssert.assertThat(contact.getPhone_work(), equalTo(contactInfoFromEditForm.getPhone_work()));
+       // MatcherAssert.assertThat(contact.getPhone_home(), equalTo(contactInfoFromEditForm.getPhone_home()));
         assertThat(contact.getPhone_home(), equalTo(contactInfoFromEditForm.getPhone_home()));
         assertThat(contact.getPhone_mobile(), equalTo(contactInfoFromEditForm.getPhone_mobile()));
         assertThat(contact.getPhone_work(), equalTo(contactInfoFromEditForm.getPhone_work()));
